@@ -9,6 +9,7 @@ import Students from "./Students.jsx"
 import UserGreeting from "./UserGreeting.jsx";
 import List from "./List.jsx"
 import Button from './Button.jsx';
+import MyComponent from './MyComponent.jsx';
 
 function App() {
   // const fruits = [{id: 1, name: "apple", calories: 95},
@@ -19,7 +20,7 @@ function App() {
 
   return(
     <>
-    <Button/> 
+      <MyComponent/>
     </>
   );
 }
