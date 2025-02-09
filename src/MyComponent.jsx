@@ -1,21 +1,32 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 function MyComponent() {
-  const [count, setCount] = useState(0);
+  const [width, setWidth] = useState(window.innerWidth);
+  const [height, setHeight] = useState(window.innerHeight);
 
   useEffect(() => {
-    document.title = count;
-  }, [count]);
+    window.addEventListener("resize", handleResize);
+    console.log("EVENT LISTENER ADDED");
 
-  function addCount() {
-    // document.title = count + 1;
-    setCount((c) => c + 1);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      console.log("EVENT LISTENER REMOVED");
+    };
+  }, []);
+
+  function handleResize() {
+    setWidth(window.innerWidth);
+    setHeight(window.innerHeight);
   }
+  // useEffect(() => {
+  //   setWidth(window.innerWidth);
+  //   setHeight(window.innerHeight);
+  // }, [window.innerWidth, window.innerHeight]);
 
   return (
     <div>
-      <p>Count: {count}</p>
-      <button onClick={addCount}>Add</button>
+      <p>Window width: {width}px</p>
+      <p>Height width: {height}px</p>
     </div>
   );
 }
