@@ -1,28 +1,23 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react";
 
 function MyComponent() {
-  const [car, setCar] = useState({ year: 2024, make: "Ford", model: "Mustang" })
+  const [count, setCount] = useState(0);
 
-  function handleYearChange(event) {
-    setCar({ ...car, year: event.target.value })
+  useEffect(() => {
+    document.title = count;
+  }, [count]);
+
+  function addCount() {
+    // document.title = count + 1;
+    setCount((c) => c + 1);
   }
-  function handleMakeChange(event) {
-    setCar({ ...car, make: event.target.value })
-  }
-  function handleModelChange(event) {
-    setCar({ ...car, model: event.target.value })
-  }
+
   return (
     <div>
-      <p>
-        Your favorite car is: {car.year} {car.make} {car.model}
-      </p>
-
-      <input type="number" value={car.year} onChange={handleYearChange} />
-      <input type="text" value={car.make} onChange={handleMakeChange} />
-      <input type="text" value={car.model} onChange={handleModelChange} />
+      <p>Count: {count}</p>
+      <button onClick={addCount}>Add</button>
     </div>
-  )
+  );
 }
 
-export default MyComponent
+export default MyComponent;
