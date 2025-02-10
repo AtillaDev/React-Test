@@ -12,12 +12,13 @@
 // import MyComponent from "./MyComponent.jsx";
 // import ColorPicker from "./colorPicker.jsx";
 // import ToDoList from "./ToDoList.jsx";
-import DigitalClock from "./DigitalClock.jsx";
+// import DigitalClock from "./DigitalClock.jsx";
+import MyComponent from "./MyComponent.jsx";
 
 function App() {
   return (
     <>
-      <DigitalClock />
+      <MyComponent />
     </>
   );
 }

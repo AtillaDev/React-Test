@@ -1,33 +1,27 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 function MyComponent() {
-  const [width, setWidth] = useState(window.innerWidth);
-  const [height, setHeight] = useState(window.innerHeight);
+  let inputRef = useRef(null);
 
   useEffect(() => {
-    window.addEventListener("resize", handleResize);
-    console.log("EVENT LISTENER ADDED");
+    console.log("Component Rendered");
+    console.log(inputRef);
+  });
 
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      console.log("EVENT LISTENER REMOVED");
-    };
-  }, []);
-
-  function handleResize() {
-    setWidth(window.innerWidth);
-    setHeight(window.innerHeight);
+  function handleClick() {
+    // num.current++;
+    inputRef.current.focus();
+    inputRef.current.style.backgroundColor === "green"
+      ? (inputRef.current.style.backgroundColor = "red")
+      : (inputRef.current.style.backgroundColor = "green");
+    // console.log(inputRef);
   }
-  // useEffect(() => {
-  //   setWidth(window.innerWidth);
-  //   setHeight(window.innerHeight);
-  // }, [window.innerWidth, window.innerHeight]);
 
   return (
-    <div>
-      <p>Window width: {width}px</p>
-      <p>Height width: {height}px</p>
-    </div>
+    <>
+      <button onClick={handleClick}>Click me</button>
+      <input type="text" ref={inputRef} />
+    </>
   );
 }
 
